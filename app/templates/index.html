@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1 class="display-4">Welcome to Secure Library</h1>
+    <p class="lead">A safe and beautiful place to manage books and loans</p>
+    <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg mt-3">Get Started - Register</a>
+</div>
+{% endblock %}

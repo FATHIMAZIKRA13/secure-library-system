@@ -1,0 +1,33 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Available</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.available }} / {{ book.quantity }}</td>
+            <td>
+                {% if book.available > 0 %}
+                <a href="{{ url_for('borrow_book', book_id=book.id) }}" class="btn btn-sm btn-success">Borrow</a>
+                {% else %}
+                <span class="text-danger">Not Available</span>
+                {% endif %}
+                
+                {% if book.pdf_filename %}
+                <a href="{{ url_for('static', filename='pdfs/' + book.pdf_filename) }}" 
+                   class="btn btn-sm btn-primary ms-2" target="_blank">
+                    📥 Download PDF
+                </a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
